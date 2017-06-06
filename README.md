@@ -1,26 +1,26 @@
 # ethereum-demo-tools
 
-###dependencies
+### dependencies
 
 (install nodejs and npm, latest versions if you can)
 
-npm i -g ethereumjs-testrpc
+`npm i -g ethereumjs-testrpc`
 
-npm i -g ethereumjs-util     # see note below
+`npm i -g ethereumjs-util     # see note below`
 
-npm i -g truffle
+`npm i -g truffle`
 
 Useful tool info and examples for learning to write Ethereum smart-contracts, to accompany my BlockGeeks article
 
 truffle commands:
 
-truffle init
+`truffle init`
 
-truffle compile
+`truffle compile`
 
-truffle migrate
+`truffle migrate`
 
-truffle console
+`truffle console`
 
 ### testrpc startup with pre-set seed phrase and pre-defined networkID
 
@@ -32,45 +32,45 @@ note: ethereumjs-testrpc depends on OUTDATED ethereumjs-util, which has a signin
 
 but it works ok on mainnet. In order to fix this, you should:
 
-npm i -g ethereumjs-util@latest  # separately from ethereumjs-testrpc
+`npm i -g ethereumjs-util@latest  # separately from ethereumjs-testrpc`
 
 now: you need to find where ethereumjs-testrpc and ethereumjs-util actually got installed, then go to the
 
-cd path-to/ethereumjs-util/node_modules
+`cd path-to/ethereumjs-util/node_modules`
 
-mv ethereumjs-util ethereumjs-util_old
+`mv ethereumjs-util ethereumjs-util_old`
 
-ln -s path-to/ethereumjs-util .
+`ln -s path-to/ethereumjs-util .`
 
 this symlink will trick ethereumjs-testrpc into using the latest version of ethereumjs-util, and solve the "signing bug" for local deployment
 
 
-###examples of interacting with Geekt contract via truffle console:
+### examples of interacting with Geekt contract via truffle console:
 
-Geekt = Geekt.deployed()
+`Geekt = Geekt.deployed()`
 
-Geekt.then(function(instance){return instance.registerNewUser("Tectract","Denver","CO","USA");})
+`Geekt.then(function(instance){return instance.registerNewUser("Tectract","Denver","CO","USA");})`
 
-Geekt.then(function(instance){return instance.addImageToUser('https://avatars1.githubusercontent.com/u/3859005?v=3&u=f4863d518451ebe42c16c776930e913335eb837b&s=400','0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})
+`Geekt.then(function(instance){return instance.addImageToUser('https://avatars1.githubusercontent.com/u/3859005?v=3&u=f4863d518451ebe42c16c776930e913335eb837b&s=400','0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})`
 
-Geekt.then(function(instance){return instance.addImageToUser('https://avatars1.githubusercontent.com/u/3859005?v=3&u=f4863d518451ebe42c16c776930e913335eb837b&s=400','');})
+`Geekt.then(function(instance){return instance.addImageToUser('https://avatars1.githubusercontent.com/u/3859005?v=3&u=f4863d518451ebe42c16c776930e913335eb837b&s=400','');})`
 
-Geekt.then(function(instance){return instance.getUser('0x0ac21f1a6fe22241ccd3af85477e5358ac5847c2');})
+`Geekt.then(function(instance){return instance.getUser('0x0ac21f1a6fe22241ccd3af85477e5358ac5847c2');})`
 
-Geekt.then(function(instance){return JSON.stringify(instance.abi);})
+`Geekt.then(function(instance){return JSON.stringify(instance.abi);})`
 
-Geekt.then(function(instance){return instance.getUsers();})
+`Geekt.then(function(instance){return instance.getUsers();})`
 
-Geekt.then(function(instance){return instance.getImages();})
+`Geekt.then(function(instance){return instance.getImages();})`
 
-Geekt.then(function(instance){return instance.getImage('0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})
+`Geekt.then(function(instance){return instance.getImage('0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})`
 
-Geekt.then(function(instance){return instance.removeImage('0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})
+`Geekt.then(function(instance){return instance.removeImage('0x6c3e007e281f6948b37c511a11e43c8026d2a16a8a45fed4e83379b66b0ab927');})`
 
-Geekt.then(function(instance){return instance.removeUser('0x0ac21f1a6fe22241ccd3af85477e5358ac5847c2');})
+`Geekt.then(function(instance){return instance.removeUser('0x0ac21f1a6fe22241ccd3af85477e5358ac5847c2');})`
 
 
-###app creation
+### app creation
 
 this app was created with: create-react-app (see: https://github.com/facebookincubator/create-react-app)
 
@@ -82,15 +82,15 @@ see https://github.com/Rob--W/cors-anywhere for details on deploying a cors-anyw
 
 to install the app locally
 
-git clone https://www.github.com/tectract/ethereum-demo-tools/
+`git clone https://www.github.com/tectract/ethereum-demo-tools/`
 
-cd ethereum-demo-tools/GeekReactApp
+`cd ethereum-demo-tools/GeekReactApp`
 
-npm i
+`npm i`
 
-npm start 
+`npm start`
 
-(or) npm run build 
+(or) `npm run build`
 
 if testing against a localhost and local deployment of the contract, you'll have to update the contract address in App.js!
 
